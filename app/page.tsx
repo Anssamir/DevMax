@@ -1,9 +1,7 @@
-import Image from 'next/image'
-
 export default function Home() {
   return (
     <main className="min-h-screen bg-surface">
-      {/* 01-ann-hifi - Announcement Bar */}
+      {/* ─── Announcement Bar ─── */}
       <section className="bg-surface dark:bg-black text-text-primary dark:text-white py-2 px-4">
         <div className="max-w-7xl mx-auto flex items-center justify-center gap-4">
           <div className="w-2 h-2 rounded-full bg-primary-mid" />
@@ -26,11 +24,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 02-nav-hifi - Main Navigation */}
+      {/* ─── Primary Navigation ─── */}
       <nav className="bg-white dark:bg-black border-b border-outline-variant">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            {/* Brand */}
+            {/* Logo + Wordmark */}
             <div className="flex items-center gap-4">
               <div className="w-8 h-8 rounded-lg bg-primary-mid" />
               <span className="font-heading text-xl font-bold text-text-heading">
@@ -38,7 +36,7 @@ export default function Home() {
               </span>
             </div>
 
-            {/* Nav Links */}
+            {/* Desktop Nav Links */}
             <div className="hidden md:flex items-center gap-10">
               <a
                 href="#how-we-work"
@@ -66,7 +64,7 @@ export default function Home() {
               </a>
             </div>
 
-            {/* CTA */}
+            {/* Primary CTA */}
             <a
               href="#contact"
               className="bg-primary-mid text-white font-semibold py-3 px-6 rounded-md hover:bg-primary-bold transition-colors shadow-sm flex items-center gap-2"
@@ -90,11 +88,11 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* 03-sec-nav-hifi - Secondary Navigation */}
+      {/* ─── Secondary Navigation (Positioning Bar) ─── */}
       <section className="bg-surface-container dark:bg-surface-container border-b border-outline-variant">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Positioning Line */}
+            {/* Tagline + Capabilities */}
             <div className="flex items-center gap-4">
               <span className="text-sm font-medium text-text-secondary">
                 One team across
@@ -104,7 +102,7 @@ export default function Home() {
               </span>
             </div>
 
-            {/* Capability Links */}
+            {/* Audience Links + Explore CTA */}
             <div className="flex items-center gap-8">
               <a
                 href="#for-founders"
@@ -142,34 +140,34 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 04-hero-hifi - Hero Section */}
+      {/* ─── Hero Section ─── */}
       <section className="bg-white dark:bg-black py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
-            {/* Hero Copy */}
+            {/* Hero Text Content */}
             <div className="space-y-8">
-              {/* Eyebrow */}
+              {/* Eyebrow Badge */}
               <div className="inline-flex items-center gap-2 py-2 px-4 rounded-full bg-primary-container">
                 <span className="text-xs font-semibold text-ink-mid">
                   Full-stack product studio
                 </span>
               </div>
 
-              {/* Headline */}
+              {/* Main Headline */}
               <h1 className="font-heading text-6xl font-bold leading-tight text-text-heading">
                 From idea to launch.
                 <br />
                 Built to grow.
               </h1>
 
-              {/* Body */}
+              {/* Subheadline */}
               <p className="text-lg text-text-secondary leading-relaxed max-w-xl">
                 DevMax turns ambitious product ideas into launch-ready software
                 — combining product strategy, experience design, engineering,
                 and AI in one senior team.
               </p>
 
-              {/* CTAs */}
+              {/* Hero Action Buttons */}
               <div className="flex items-center gap-4">
                 <a
                   href="#contact"
@@ -185,7 +183,7 @@ export default function Home() {
                 </a>
               </div>
 
-              {/* Proof */}
+              {/* Trust Indicators */}
               <div className="flex items-center gap-8 pt-4">
                 <div className="flex items-center gap-2">
                   <svg
@@ -222,13 +220,12 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Hero Visual */}
+            {/* Hero Visual (Product Screenshot) */}
             <div className="relative">
               <div className="relative rounded-3xl overflow-hidden aspect-[4/3] bg-gradient-to-br from-ink-container to-surface">
-                {/* Placeholder for hero image */}
                 <div className="absolute inset-0 bg-gradient-to-br from-ink-container/80 to-surface/80" />
 
-                {/* Chrome Bar */}
+                {/* Mock Browser Chrome */}
                 <div className="absolute bottom-4 left-4 right-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-4 flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-red-400" />
@@ -245,11 +242,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 05-proof-hifi - Proof Strip */}
+      {/* ─── Social Proof Strip ─── */}
       <section className="bg-surface-container dark:bg-surface-container border-y border-outline-variant py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            {/* Proof Intro */}
+            {/* Proof Statement */}
             <div className="space-y-2">
               <p className="text-sm font-semibold text-text-primary">
                 Built for teams that care about getting it right.
@@ -259,7 +256,7 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Metrics */}
+            {/* Key Metrics */}
             <div className="flex items-center gap-12">
               <div className="text-center">
                 <div className="text-3xl font-bold text-text-heading">50+</div>
@@ -284,11 +281,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 06-problem-hifi - Problem Section */}
+      {/* ─── Problem Statement ─── */}
       <section className="bg-white dark:bg-black py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
-            {/* Problem Copy */}
+            {/* Problem Description */}
             <div className="space-y-8">
               <p className="font-mono text-xs font-semibold text-text-secondary uppercase tracking-wider">
                 Building software shouldn't feel fragmented
@@ -311,7 +308,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Problem Callout */}
+            {/* Key Takeaway Card */}
             <div className="bg-surface-container dark:bg-surface-container border border-text-heading rounded-xl p-8 space-y-6">
               <h3 className="font-heading text-2xl font-bold leading-tight text-text-heading">
                 Less handoff. Better decisions. Faster progress.
@@ -340,10 +337,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 07-model-hifi - Model Section */}
+      {/* ─── How We Work (Process Stages) ─── */}
       <section id="how-we-work" className="bg-surface-container dark:bg-surface-container py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto space-y-16">
-          {/* Model Header */}
+          {/* Section Header */}
           <div className="space-y-4">
             <p className="font-mono text-xs font-semibold text-text-secondary uppercase tracking-wider">
               One team. Every stage.
@@ -358,7 +355,7 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Model Stages */}
+          {/* Pipeline Stage Cards */}
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {[
               { name: 'Strategy', icon: '🎯', active: false },
@@ -369,15 +366,17 @@ export default function Home() {
             ].map((stage) => (
               <div
                 key={stage.name}
-                className={`p-6 rounded-xl border ${stage.active
+                className={`p-6 rounded-xl border ${
+                  stage.active
                     ? 'bg-primary-mid border-primary-mid'
                     : 'bg-white dark:bg-black border-outline-variant'
-                  }`}
+                }`}
               >
                 <div className="text-2xl mb-4">{stage.icon}</div>
                 <h3
-                  className={`font-heading font-bold ${stage.active ? 'text-black' : 'text-text-heading'
-                    }`}
+                  className={`font-heading font-bold ${
+                    stage.active ? 'text-black' : 'text-text-heading'
+                  }`}
                 >
                   {stage.name}
                 </h3>
@@ -385,7 +384,7 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Model Footer */}
+          {/* Section Footer + CTA */}
           <div className="flex items-center justify-between pt-8 border-t border-outline-variant">
             <p className="text-base font-medium text-text-secondary max-w-2xl">
               You don't have to figure out which service you need first. Tell us
@@ -401,10 +400,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 08-work-hifi - Selected Work Section */}
+      {/* ─── Selected Work (Case Studies) ─── */}
       <section id="selected-work" className="bg-white dark:bg-black py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto space-y-16">
-          {/* Work Header */}
+          {/* Section Header */}
           <div className="space-y-4">
             <p className="font-mono text-xs font-semibold text-text-secondary uppercase tracking-wider">
               Selected work
@@ -418,7 +417,7 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Work Cards */}
+          {/* Case Study Cards */}
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
@@ -462,10 +461,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 09-build-hifi - What We Build Section */}
+      {/* ─── What We Build (Services) ─── */}
       <section id="what-we-build" className="bg-surface-container dark:bg-surface-container py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto space-y-16">
-          {/* Build Header */}
+          {/* Section Header */}
           <div className="space-y-4">
             <p className="font-mono text-xs font-semibold text-text-secondary uppercase tracking-wider">
               What we build
@@ -479,7 +478,7 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Build Row */}
+          {/* Service Cards (2x2 Grid) */}
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {
@@ -519,10 +518,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 10-ai-hifi - AI-Native Section */}
+      {/* ─── AI-Native Differentiator (Dark) ─── */}
       <section id="ai-systems" className="bg-ink-container dark:bg-ink-container py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto space-y-16">
-          {/* AI Header */}
+          {/* Section Header */}
           <div className="space-y-4">
             <p className="font-mono text-xs font-semibold text-primary-mid uppercase tracking-wider">
               AI-native. Not AI-added.
@@ -538,7 +537,7 @@ export default function Home() {
             </p>
           </div>
 
-          {/* AI Features */}
+          {/* AI Capability Cards */}
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
@@ -573,10 +572,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 11-testimonials-hifi - Testimonials Section */}
+      {/* ─── Testimonials ─── */}
       <section className="bg-surface-container dark:bg-surface-container py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto space-y-16">
-          {/* Testimonials Header */}
+          {/* Section Header */}
           <div className="space-y-4">
             <p className="font-mono text-xs font-semibold text-text-secondary uppercase tracking-wider">
               What founders say
@@ -586,7 +585,7 @@ export default function Home() {
             </h2>
           </div>
 
-          {/* Testimonials */}
+          {/* Testimonial Cards */}
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
@@ -613,7 +612,7 @@ export default function Home() {
                 className="bg-white dark:bg-black border border-outline-variant rounded-xl p-8 space-y-6"
               >
                 <p className="text-base text-text-secondary leading-relaxed italic">
-                  "{testimonial.quote}"
+                  &ldquo;{testimonial.quote}&rdquo;
                 </p>
                 <div>
                   <p className="font-heading font-bold text-text-heading">
@@ -629,11 +628,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 12-faq-hifi - FAQ Section */}
+      {/* ─── FAQ ─── */}
       <section className="bg-white dark:bg-black py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-3 gap-16">
-            {/* FAQ Left */}
+            {/* FAQ Header + CTA */}
             <div className="space-y-8">
               <div className="space-y-4">
                 <p className="font-mono text-xs font-semibold text-text-secondary uppercase tracking-wider">
@@ -664,7 +663,7 @@ export default function Home() {
               </a>
             </div>
 
-            {/* FAQ Items */}
+            {/* FAQ Accordion Items */}
             <div className="lg:col-span-2 space-y-4">
               {[
                 {
@@ -710,16 +709,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 13-final-cta-hifi - Final CTA Section */}
+      {/* ─── Final CTA (Dark Gradient) ─── */}
       <section
         id="contact"
         className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden"
       >
-        {/* Gradient Background */}
+        {/* Gradient Background Layer */}
         <div className="absolute inset-0 bg-gradient-to-br from-ink-container to-surface-container" />
 
         <div className="relative max-w-4xl mx-auto text-center space-y-12">
-          {/* CTA Text Group */}
+          {/* CTA Headline + Body */}
           <div className="space-y-4">
             <h2 className="font-heading text-4xl font-bold leading-tight text-white">
               Ready to build something real?
@@ -730,7 +729,7 @@ export default function Home() {
             </p>
           </div>
 
-          {/* CTA Buttons */}
+          {/* CTA Action Buttons */}
           <div className="flex items-center justify-center gap-4">
             <a
               href="mailto:hello@devmax.app"
@@ -748,12 +747,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 14-footer-hifi - Footer */}
+      {/* ─── Footer ─── */}
       <footer className="bg-black text-white pt-20 pb-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto space-y-16">
-          {/* Footer Top */}
+          {/* Footer Upper: Brand + Navigation Columns */}
           <div className="flex flex-col md:flex-row justify-between gap-12">
-            {/* Footer Brand */}
+            {/* Brand Identity */}
             <div className="space-y-4 max-w-xs">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-lg bg-primary-mid" />
@@ -765,8 +764,9 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Footer Nav */}
+            {/* Navigation Link Columns */}
             <div className="flex gap-16">
+              {/* Services Column */}
               <div className="space-y-4">
                 <h4 className="font-heading font-bold">Services</h4>
                 <ul className="space-y-2 text-sm text-neutral-soft">
@@ -792,6 +792,8 @@ export default function Home() {
                   </li>
                 </ul>
               </div>
+
+              {/* Company Column */}
               <div className="space-y-4">
                 <h4 className="font-heading font-bold">Company</h4>
                 <ul className="space-y-2 text-sm text-neutral-soft">
@@ -817,6 +819,8 @@ export default function Home() {
                   </li>
                 </ul>
               </div>
+
+              {/* Social Column */}
               <div className="space-y-4">
                 <h4 className="font-heading font-bold">Connect</h4>
                 <ul className="space-y-2 text-sm text-neutral-soft">
@@ -840,7 +844,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Footer Bottom */}
+          {/* Footer Lower: Copyright + Legal Links */}
           <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-neutral-intense">
             <p className="text-xs text-neutral-soft">
               © 2026 DevMax. All rights reserved.
