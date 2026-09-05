@@ -34,4 +34,29 @@
   .input {
     @apply bg-white border border-outline rounded-md px-4 py-3 text-text-primary placeholder-text-disabled focus:outline-none focus:ring-2 focus:ring-primary-mid focus:border-transparent;
   }
+
+  .nav-link {
+    @apply relative inline-flex;
+
+    span {
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: #9BBF35;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+      }
+    }
+
+    &:hover span::after {
+      transform: scaleX(1);
+    }
+  }
 }
