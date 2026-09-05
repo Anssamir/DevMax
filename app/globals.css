@@ -1,0 +1,37 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white text-text-primary antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading text-text-heading;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-mid text-black font-semibold py-3 px-6 rounded-md hover:bg-primary-bold transition-colors shadow-sm;
+  }
+
+  .btn-secondary {
+    @apply bg-ink-mid text-white font-semibold py-3 px-6 rounded-md hover:bg-ink-bold transition-colors;
+  }
+
+  .btn-outline {
+    @apply border border-outline text-text-primary font-semibold py-3 px-6 rounded-md hover:bg-surface-hover transition-colors;
+  }
+
+  .card {
+    @apply bg-white rounded-xl border border-outline-variant p-6;
+  }
+
+  .input {
+    @apply bg-white border border-outline rounded-md px-4 py-3 text-text-primary placeholder-text-disabled focus:outline-none focus:ring-2 focus:ring-primary-mid focus:border-transparent;
+  }
+}
