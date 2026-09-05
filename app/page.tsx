@@ -1,4 +1,3 @@
-import AnnouncementBar from '@/components/AnnouncementBar'
 import PrimaryNavigation from '@/components/PrimaryNavigation'
 import HeroSection from '@/components/HeroSection'
 import SocialProofStrip from '@/components/SocialProofStrip'
@@ -15,7 +14,6 @@ import Footer from '@/components/Footer'
 export default function Home() {
   return (
     <main className="min-h-screen bg-surface">
-      <AnnouncementBar />
       <PrimaryNavigation />
       <HeroSection />
       <SocialProofStrip />
