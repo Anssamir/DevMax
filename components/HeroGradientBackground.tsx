@@ -20,6 +20,13 @@ export interface HeroGradientBackgroundProps {
    * cover-fit at every size.
    */
   stretch?: number;
+  /**
+   * 'cover' crops the artwork to fill the frame. 'fill' shows the whole
+   * artwork, stretched so its top and bottom sit flush with the frame's.
+   */
+  fit?: 'cover' | 'fill';
+  /** Point of the artwork to centre the frame on, in 0..1 image coordinates. */
+  focus?: [number, number];
   paused?: boolean;
   className?: string;
   style?: CSSProperties;
@@ -41,8 +48,8 @@ const FRAG = `
 precision highp float;
 varying vec2 vUV;
 uniform sampler2D uTex;
-uniform float uTime, uSpeed, uAmp, uZoom, uVibrance;
-uniform vec2 uCover;
+uniform float uTime, uSpeed, uAmp, uZoom, uVibrance, uInset;
+uniform vec2 uCover, uFocus;
 
 float hash(vec2 p) {
   return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
@@ -71,9 +78,9 @@ float fbm(vec2 p) {
 }
 
 void main() {
-  // Cover-fit the artwork inside the canvas, then leave a small inset so the
-  // warp never drags the transparent border into view.
-  vec2 uv = (vUV - 0.5) * uCover * (0.94 / uZoom) + 0.5;
+  // Fit the artwork to the canvas, then leave a small inset so the warp never
+  // drags the transparent border into view.
+  vec2 uv = (vUV - 0.5) * uCover * (uInset / uZoom) + uFocus;
   float t = uTime * uSpeed;
 
   // Two-pass domain warp: the second layer is fed by the first, which is what
@@ -118,11 +125,13 @@ function createShader(gl: WebGLRenderingContext, type: number, src: string): Web
 
 export default function HeroGradientBackground({
   src = '/hero-bacground.png',
-  speed = 0.5,
+  speed = 0.9,
   amplitude = 0.045,
   zoom = 1.35,
   vibrance = 1.35,
   stretch = 0.8,
+  fit = 'cover',
+  focus = [0.5, 0.5],
   paused = false,
   className,
   style,
@@ -130,8 +139,8 @@ export default function HeroGradientBackground({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [ready, setReady] = useState(false);
 
-  const live = useRef({ speed, amplitude, zoom, vibrance, stretch, paused });
-  live.current = { speed, amplitude, zoom, vibrance, stretch, paused };
+  const live = useRef({ speed, amplitude, zoom, vibrance, stretch, fit, focus, paused });
+  live.current = { speed, amplitude, zoom, vibrance, stretch, fit, focus, paused };
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -173,7 +182,9 @@ export default function HeroGradientBackground({
       amp: gl.getUniformLocation(program, 'uAmp'),
       zoom: gl.getUniformLocation(program, 'uZoom'),
       vibrance: gl.getUniformLocation(program, 'uVibrance'),
+      inset: gl.getUniformLocation(program, 'uInset'),
       cover: gl.getUniformLocation(program, 'uCover'),
+      focus: gl.getUniformLocation(program, 'uFocus'),
       tex: gl.getUniformLocation(program, 'uTex'),
     };
 
@@ -245,20 +256,24 @@ export default function HeroGradientBackground({
       if (!visible || !textureReady) return;
 
       const canvasAspect = canvas.clientWidth / Math.max(1, canvas.clientHeight);
-      const fit: [number, number] =
-        canvasAspect > imageAspect
-          ? [1, imageAspect / canvasAspect]
-          : [canvasAspect / imageAspect, 1];
+      let cover: [number, number] = [1, 1];
 
-      // Mismatch in octaves between the container and the artwork. Stays at a
-      // strict cover-fit for ordinary shapes, then eases towards a stretch fit
-      // past roughly a 1.8x mismatch (phone-height columns).
-      const mismatch = Math.abs(Math.log(canvasAspect / imageAspect)) / Math.LN2;
-      const relax = cfg.stretch * Math.min(1, Math.max(0, (mismatch - 0.85) / 0.9));
-      const cover: [number, number] = [
-        fit[0] + (1 - fit[0]) * relax,
-        fit[1] + (1 - fit[1]) * relax,
-      ];
+      if (cfg.fit === 'cover') {
+        const fitted: [number, number] =
+          canvasAspect > imageAspect
+            ? [1, imageAspect / canvasAspect]
+            : [canvasAspect / imageAspect, 1];
+
+        // Mismatch in octaves between the container and the artwork. Stays at a
+        // strict cover-fit for ordinary shapes, then eases towards a stretch fit
+        // past roughly a 1.8x mismatch (phone-height columns).
+        const mismatch = Math.abs(Math.log(canvasAspect / imageAspect)) / Math.LN2;
+        const relax = cfg.stretch * Math.min(1, Math.max(0, (mismatch - 0.85) / 0.9));
+        cover = [
+          fitted[0] + (1 - fitted[0]) * relax,
+          fitted[1] + (1 - fitted[1]) * relax,
+        ];
+      }
 
       gl!.clear(gl!.COLOR_BUFFER_BIT);
       gl!.activeTexture(gl!.TEXTURE0);
@@ -269,7 +284,11 @@ export default function HeroGradientBackground({
       gl!.uniform1f(u.amp, cfg.amplitude);
       gl!.uniform1f(u.zoom, Math.max(0.1, cfg.zoom));
       gl!.uniform1f(u.vibrance, cfg.vibrance);
+      // 'fill' shows the artwork edge to edge; 'cover' keeps a little slack so
+      // the warp has room to move without smearing the frame's borders.
+      gl!.uniform1f(u.inset, cfg.fit === 'fill' ? 0.995 : 0.94);
       gl!.uniform2f(u.cover, cover[0], cover[1]);
+      gl!.uniform2f(u.focus, cfg.focus[0], cfg.focus[1]);
       gl!.drawArrays(gl!.TRIANGLE_STRIP, 0, 4);
     };
     raf = requestAnimationFrame(render);
@@ -298,8 +317,8 @@ export default function HeroGradientBackground({
           position: 'absolute',
           inset: 0,
           backgroundImage: `url(${src})`,
-          backgroundSize: `${zoom * 100}% auto`,
-          backgroundPosition: 'center',
+          backgroundSize: fit === 'fill' ? '100% 100%' : `${zoom * 100}% auto`,
+          backgroundPosition: `${focus[0] * 100}% ${focus[1] * 100}%`,
           backgroundRepeat: 'no-repeat',
           opacity: ready ? 0 : 1,
           transition: 'opacity 600ms ease',
