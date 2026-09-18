@@ -6,23 +6,14 @@ export default function HeroSection() {
       id="hero"
       className="relative isolate flex min-h-svh items-center overflow-hidden bg-white px-4 pb-20 pt-32 sm:px-6 lg:px-8"
     >
-      {/* Animated gradient block: anchored to the right and stretched from the
-          very top of the hero to its very bottom at every screen height. */}
-      <div className="pointer-events-none absolute inset-y-0 right-0 -z-10 w-[80%] sm:w-[70%] lg:w-[56%]">
-        <div
-          className="absolute inset-0"
-          style={{
-            clipPath: 'polygon(0 0, 100% 0, 100% calc(100% - 5vw), 0 100%)',
-            // Fade the artwork's own alpha towards the copy column, so the
-            // block dissolves into the page with no seam at its left edge.
-            WebkitMaskImage:
-              'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.25) 25%, rgba(0,0,0,0.8) 55%, #000 78%)',
-            maskImage:
-              'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.25) 25%, rgba(0,0,0,0.8) 55%, #000 78%)',
-          }}
-        >
-          <HeroGradientBackground className="absolute inset-0 h-full w-full" zoom={1.15} />
-        </div>
+      {/* The whole artwork covers the hero: edge to edge across its width, top
+          edge on the hero's top and bottom edge on its bottom. */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <HeroGradientBackground
+          className="absolute inset-0 h-full w-full"
+          fit="fill"
+          speed={1.3}
+        />
       </div>
 
       <div className="mx-auto w-full max-w-7xl">
