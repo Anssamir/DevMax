@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 const navLinks = [
   { label: 'About us', href: '#about', hasDropdown: false },
   { label: 'How we work', href: '#how-we-work', hasDropdown: false },
@@ -11,15 +13,15 @@ export default function PrimaryNavigation() {
     <div className="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
       <nav className="max-w-7xl mx-auto flex items-center justify-between h-16 px-6 rounded-full bg-white/20 backdrop-blur-2xl border border-black/10 shadow-lg">
         {/* Logo + Wordmark */}
-        <a href="/" className="flex items-center gap-3">
-          <svg className="w-7 h-7 text-black" viewBox="0 0 32 32" fill="none">
-            <path d="M4 8L8 4L12 8L8 12L4 8Z" fill="currentColor" />
-            <path d="M12 8L16 4L20 8L16 12L12 8Z" fill="currentColor" />
-            <path d="M20 8L24 4L28 8L24 12L20 8Z" fill="currentColor" />
-          </svg>
-          <span className="font-heading text-lg font-bold text-black tracking-tight">
-            DevMax
-          </span>
+        <a href="/" className="flex items-center">
+          <Image
+            src="/DevMax logo.svg"
+            alt="DevMax"
+            width={120}
+            height={32}
+            className="h-8 w-auto"
+            priority
+          />
         </a>
 
         {/* Center Nav Links */}

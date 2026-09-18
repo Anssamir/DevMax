@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import Image from 'next/image'
 
 export default function Footer() {
   useEffect(() => {
@@ -43,8 +44,14 @@ export default function Footer() {
 
           {/* Logo */}
           <div className="footer-logo">
-            <div className="footer-logo-mark">D</div>
-            <span className="footer-logo-name">DevMax</span>
+            <Image
+              src="/DevMax logo.svg"
+              alt="DevMax"
+              width={140}
+              height={36}
+              className="h-9 w-auto"
+              priority
+            />
           </div>
 
           {/* Tagline */}
