@@ -1,6 +1,5 @@
 import PrimaryNavigation from '@/components/PrimaryNavigation'
 import HeroSection from '@/components/HeroSection'
-import SocialProofStrip from '@/components/SocialProofStrip'
 import ProblemStatement from '@/components/ProblemStatement'
 import ProcessStages from '@/components/ProcessStages'
 import CaseStudies from '@/components/CaseStudies'
@@ -16,7 +15,6 @@ export default function Home() {
     <main className="min-h-screen bg-surface">
       <PrimaryNavigation />
       <HeroSection />
-      <SocialProofStrip />
       <ProblemStatement />
       <ProcessStages />
       <CaseStudies />

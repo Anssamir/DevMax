@@ -19,6 +19,13 @@ export const metadata: Metadata = {
   title: 'DevMax - From idea to launch. Built to grow.',
   description:
     'DevMax turns ambitious product ideas into launch-ready software — combining product strategy, experience design, engineering, and AI in one senior team.',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
 }
 
 export default function RootLayout({
